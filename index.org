@@ -1,27 +1,7 @@
+#+SETUPFILE: ./post/html_header.org
 #+TITLE: HO YOUNG의 Recording
 #+AUTHOR:  HO YOUNG
-#+OPTIONS: html-list-type:unordered num:nil
-#+OPTIONS: toc:2 num:nil H:5
-#+HTML_HEAD: <style>
-#+HTML_HEAD:  #table-of-contents {
-#+HTML_HEAD:    position: fixed;
-#+HTML_HEAD:    left: 0;
-#+HTML_HEAD:    top: 0;
-#+HTML_HEAD:    width: 20%;
-#+HTML_HEAD:    height: 100%;
-#+HTML_HEAD:    overflow-y: auto;
-#+HTML_HEAD:    background-color: #f8f8f8;
-#+HTML_HEAD:    padding: 20px;
-#+HTML_HEAD:  }
-#+HTML_HEAD:  #content {
-#+HTML_HEAD:    margin-left: 27%;
-#+HTML_HEAD:    padding: 20px;
-#+HTML_HEAD:  }
-#+HTML_HEAD: .outline-2 { margin-left: 2em; }
-#+HTML_HEAD: .outline-3 { margin-left: 2em; }
-#+HTML_HEAD: .outline-4 { margin-left: 2em; }
-#+HTML_HEAD: .outline-5 { margin-left: 3em; }
-#+HTML_HEAD: </style>
+#+OPTIONS: html-list-type:unordered num:nil toc:2 H:5
 * 환경
 ** Macbook
    - Macbook Air(M1),  macOS 14.6.1
@@ -48,7 +28,7 @@
     - git commit -m "Initial commit"
     - git push -u origin main
     #+end_src
-** 한글맞춤법 설정 for macOS
+** 한글맞춤법  for macOS
 *** hunspell 설치
     #+begin_src 
     brew install hunspell
@@ -95,4 +75,18 @@
     (interactive)
     (ispell-buffer))
     #+end_src
- 
+** Github 경험
+   - 새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
+   - cd ~/Dropbox/Docs
+   - repository 만든 후 안내 내용
+    
+   #+begin_src 
+     $ echo "# Docs" >> README.md
+     $ git init
+     $ git add README.md   → git add .
+     $ git commit -m "first commit"
+     $ git branch -M main
+     $ git remote add origin git@github.com:hy36370637/Docs.git
+     $ git push -u origin main
+   #+end_src
+
