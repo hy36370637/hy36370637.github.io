@@ -11,7 +11,7 @@
    - emacs-version: 31.0.50,  자체 컴파일
    - org-version : 9.7.10
 * GITHUB
-** github.io 시작(홈페이지 생성)
+** github.io 입문
 *** Create a repository
     - username.github.io
     - 나머지는 기본값 유지
@@ -30,7 +30,7 @@
     - git commit -m "Initial commit"
     - git push -u origin main
     #+end_src
-** Github 첫 경험
+** Github 입문
    - 새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
    - cd ~/Dropbox/Docs
    - repository 만든 후 안내 내용
