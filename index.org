@@ -1,7 +1,9 @@
-#+SETUPFILE: ./post/html_header.org
+#+SETUPFILE: ./post/html_header.txt
 #+TITLE: HO YOUNG의 Recording
 #+AUTHOR:  HO YOUNG
-#+OPTIONS: html-list-type:unordered num:nil toc:3 H:5
+#+OPTIONS: html-style:nil html-scripts:nil html-list-type:unordered num:nil toc:2 H:5
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./post/custom-style.css" />
+#+HTML_HEAD: <script src="./post/folding-script.js"></script>
 * 환경
 ** Macbook
    - Macbook Air(M1),  macOS 14.6.1

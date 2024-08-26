@@ -1,0 +1,81 @@
+#+HTML_HEAD: <style>
+#+HTML_HEAD:  #table-of-contents {
+#+HTML_HEAD:    position: fixed;
+#+HTML_HEAD:    left: 0;
+#+HTML_HEAD:    top: 0;
+#+HTML_HEAD:    width: 20%;
+#+HTML_HEAD:    height: 100%;
+#+HTML_HEAD:    overflow-y: auto;
+#+HTML_HEAD:    background-color: #f8f8f8;
+#+HTML_HEAD:    padding: 20px;
+#+HTML_HEAD:  }
+#+HTML_HEAD:  #content {
+#+HTML_HEAD:    margin-left: 27%;
+#+HTML_HEAD:    padding: 20px;
+#+HTML_HEAD:  }
+#+HTML_HEAD: .outline-2 { margin-left: 2em; }
+#+HTML_HEAD: .outline-3 { margin-left: 2em; }
+#+HTML_HEAD: .outline-4 { margin-left: 2em; }
+#+HTML_HEAD: .outline-5 { margin-left: 3em; }
+#+HTML_HEAD: </style>
+
+#+HTML_HEAD: <style>
+#+HTML_HEAD:  #table-of-contents {
+#+HTML_HEAD:    position: fixed;
+#+HTML_HEAD:    left: 0;
+#+HTML_HEAD:    top: 0;
+#+HTML_HEAD:    width: 20%;
+#+HTML_HEAD:    height: 100%;
+#+HTML_HEAD:    overflow-y: auto;
+#+HTML_HEAD:    background-color: #f8f8f8;
+#+HTML_HEAD:    padding: 20px;
+#+HTML_HEAD:  }
+#+HTML_HEAD:  #content {
+#+HTML_HEAD:    margin-left: 27%;
+#+HTML_HEAD:    padding: 20px;
+#+HTML_HEAD:  }
+#+HTML_HEAD: .outline-2 { margin-left: 2em; }
+#+HTML_HEAD: .outline-3 { margin-left: 2em; }
+#+HTML_HEAD: .outline-4 { margin-left: 2em; }
+#+HTML_HEAD: .outline-5 { margin-left: 3em; }
+#+HTML_HEAD: /* 새로운 스타일 추가 */
+#+HTML_HEAD: .header-list {
+#+HTML_HEAD:   list-style-type: none;
+#+HTML_HEAD:   padding-left: 0;
+#+HTML_HEAD: }
+#+HTML_HEAD: .header-item {
+#+HTML_HEAD:   margin-bottom: 10px;
+#+HTML_HEAD:   font-weight: bold;
+#+HTML_HEAD: }
+#+HTML_HEAD: .header-item::before {
+#+HTML_HEAD:   content: "* ";
+#+HTML_HEAD:   color: #666;
+#+HTML_HEAD: }
+#+HTML_HEAD: .subheader-item {
+#+HTML_HEAD:   margin-left: 20px;
+#+HTML_HEAD:   margin-top: 5px;
+#+HTML_HEAD: }
+#+HTML_HEAD: .subheader-item::before {
+#+HTML_HEAD:   content: "   * ";
+#+HTML_HEAD:   color: #666;
+#+HTML_HEAD: }
+#+HTML_HEAD: .third-level {
+#+HTML_HEAD:   display: none;
+#+HTML_HEAD:   margin-left: 20px;
+#+HTML_HEAD: }
+#+HTML_HEAD: .subsubheader-item::before {
+#+HTML_HEAD:   content: "      * ";
+#+HTML_HEAD:   color: #666;
+#+HTML_HEAD: }
+#+HTML_HEAD: .toggle-btn {
+#+HTML_HEAD:   background: none;
+#+HTML_HEAD:   border: none;
+#+HTML_HEAD:   color: #666;
+#+HTML_HEAD:   cursor: pointer;
+#+HTML_HEAD:   font-weight: bold;
+#+HTML_HEAD:   margin-left: 5px;
+#+HTML_HEAD: }
+#+HTML_HEAD: .toggle-btn:focus {
+#+HTML_HEAD:   outline: none;
+#+HTML_HEAD: }
+#+HTML_HEAD: </style>
