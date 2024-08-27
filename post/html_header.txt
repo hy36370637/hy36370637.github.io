@@ -17,27 +17,6 @@
 #+HTML_HEAD: .outline-3 { margin-left: 2em; }
 #+HTML_HEAD: .outline-4 { margin-left: 2em; }
 #+HTML_HEAD: .outline-5 { margin-left: 3em; }
-#+HTML_HEAD: </style>
-
-#+HTML_HEAD: <style>
-#+HTML_HEAD:  #table-of-contents {
-#+HTML_HEAD:    position: fixed;
-#+HTML_HEAD:    left: 0;
-#+HTML_HEAD:    top: 0;
-#+HTML_HEAD:    width: 20%;
-#+HTML_HEAD:    height: 100%;
-#+HTML_HEAD:    overflow-y: auto;
-#+HTML_HEAD:    background-color: #f8f8f8;
-#+HTML_HEAD:    padding: 20px;
-#+HTML_HEAD:  }
-#+HTML_HEAD:  #content {
-#+HTML_HEAD:    margin-left: 27%;
-#+HTML_HEAD:    padding: 20px;
-#+HTML_HEAD:  }
-#+HTML_HEAD: .outline-2 { margin-left: 2em; }
-#+HTML_HEAD: .outline-3 { margin-left: 2em; }
-#+HTML_HEAD: .outline-4 { margin-left: 2em; }
-#+HTML_HEAD: .outline-5 { margin-left: 3em; }
 #+HTML_HEAD: /* 새로운 스타일 추가 */
 #+HTML_HEAD: .header-list {
 #+HTML_HEAD:   list-style-type: none;
@@ -79,3 +58,5 @@
 #+HTML_HEAD:   outline: none;
 #+HTML_HEAD: }
 #+HTML_HEAD: </style>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./post/custom-style.css" />
+#+HTML_HEAD: <script src="./post/folding-script.js"></script>

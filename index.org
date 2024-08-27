@@ -2,8 +2,6 @@
 #+TITLE: Emacs for macos usage
 #+AUTHOR:  HO YOUNG
 #+OPTIONS: html-style:nil html-scripts:nil html-list-type:unordered num:nil toc:2 H:5
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./post/custom-style.css" />
-#+HTML_HEAD: <script src="./post/folding-script.js"></script>
 * EMACS
 ** 한글맞춤법
 *** hunspell 설치
