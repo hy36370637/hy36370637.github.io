@@ -7,11 +7,13 @@
     overflow-y: auto;
     background-color: #f8f8f8;
     padding: 20px;
+    transition: transform 0.3s ease-in-out;
 }
 
 #content {
     margin-left: 27%;
     padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
 }
 
 .outline-2 { margin-left: 0; }
@@ -75,4 +77,40 @@ pre {
 code {
     font-family: Consolas, Monaco, 'Andale Mono', monospace;
     font-size: 0.9em;
+}
+
+#menu-toggle {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #f8f8f8;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    #table-of-contents {
+        transform: translateX(-100%);
+        width: 80%;
+        z-index: 999;
+    }
+
+    #content {
+        margin-left: 0;
+    }
+
+    #menu-toggle {
+        display: block;
+    }
+
+    body.menu-open #table-of-contents {
+        transform: translateX(0);
+    }
+
+    body.menu-open #content {
+        margin-left: 0;
+    }
 }
