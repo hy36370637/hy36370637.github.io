@@ -9,10 +9,33 @@ document.addEventListener('DOMContentLoaded', function() {
     menuToggle.textContent = '☰';
     body.insertBefore(menuToggle, body.firstChild);
 
+    // Add dark mode toggle button
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.id = 'dark-mode-toggle';
+    darkModeToggle.textContent = '🌓';
+    body.insertBefore(darkModeToggle, body.firstChild);
+
     menuToggle.addEventListener('click', function(e) {
         e.stopPropagation();
         body.classList.toggle('menu-open');
     });
+
+    // Dark mode toggle functionality
+    darkModeToggle.addEventListener('click', function() {
+        document.documentElement.setAttribute('data-theme', 
+            document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        localStorage.setItem('theme', document.documentElement.getAttribute('data-theme'));
+    });
+
+    // Check for saved theme preference or prefer-color-scheme
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (prefersDarkScheme.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
 
     headers.forEach(header => {
         const toggleBtn = document.createElement('span');

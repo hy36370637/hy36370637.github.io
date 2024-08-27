@@ -1,3 +1,33 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --link-color: #0000ff;
+    --toc-bg: #f8f8f8;
+    --toc-text: #333333;
+    --pre-bg: #f4f4f4;
+    --border-color: #dddddd;
+    --toggle-color: #666666;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --link-color: #6699ff;
+    --toc-bg: #2a2a2a;
+    --toc-text: #ffffff;
+    --pre-bg: #333333;
+    --border-color: #444444;
+    --toggle-color: #999999;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 #table-of-contents {
     position: fixed;
     left: 0;
@@ -5,9 +35,29 @@
     width: 20%;
     height: 100%;
     overflow-y: auto;
-    background-color: #f8f8f8;
+    background-color: var(--toc-bg);
+    color: var(--toc-text);
     padding: 20px;
     transition: transform 0.3s ease-in-out;
+    border-right: 1px solid var(--border-color);
+}
+
+#table-of-contents a {
+    color: var(--toc-text);
+    text-decoration: none;
+}
+
+#table-of-contents a:hover {
+    text-decoration: underline;
+}
+
+#table-of-contents ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+#table-of-contents > ul {
+    padding-left: 0;
 }
 
 #content {
@@ -51,24 +101,19 @@
 .toggle-btn {
     cursor: pointer;
     user-select: none;
-    color: #666;
+    color: var(--toggle-color);
     font-weight: normal;
     font-size: 0.9em;
     margin-left: 0.5em;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
-
 h2, h3, h4, h5 {
-    color: #333;
+    color: var(--text-color);
 }
 
 pre {
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
+    background-color: var(--pre-bg);
+    border: 1px solid var(--border-color);
     border-radius: 3px;
     padding: 10px;
     overflow-x: auto;
@@ -79,16 +124,25 @@ code {
     font-size: 0.9em;
 }
 
-#menu-toggle {
-    display: none;
+#menu-toggle, #dark-mode-toggle {
     position: fixed;
-    top: 10px;
-    left: 10px;
     z-index: 1000;
-    background-color: #f8f8f8;
-    border: none;
+    background-color: var(--toc-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
     padding: 10px;
     cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+    top: 10px;
+    left: 10px;
+}
+
+#dark-mode-toggle {
+    top: 10px;
+    right: 10px;
 }
 
 @media screen and (max-width: 768px) {
@@ -112,5 +166,10 @@ code {
 
     body.menu-open #content {
         margin-left: 0;
+    }
+
+    #dark-mode-toggle {
+        top: 10px;
+        right: 60px;
     }
 }
