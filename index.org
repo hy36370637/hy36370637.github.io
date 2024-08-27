@@ -51,51 +51,50 @@
     (ispell-buffer))
     #+end_src
 ** Function
-*** trailing-whitespace 관련
-     - 문장 끝의 줄바꿈 표시를 공백으로 대체하여 문장을 연결하고 빈 줄은 유지하는 함수
-    #+begin_src emacs-lisp
-(defun my/delete-trailing-whitespace-region (start end)
-  "줄 끝의 공백과 탭을 제거,  줄바꿈과 빈 줄 그대로 유지."
-  (interactive "r")
-  (save-excursion
-    (save-restriction
-      (narrow-to-region start end)
-      (goto-char (point-min))
-      (while (re-search-forward "[ \t]+$" nil t)
-        (replace-match "")))))
+   - trailing-whitespace 관련
+     + 문장 끝의 줄바꿈 표시를 공백으로 대체하여 문장을 연결하고 빈 줄은 유지하는 함수
+     #+begin_src emacs-lisp
+     (defun my/delete-trailing-whitespace-region (start end)
+       "줄 끝의 공백과 탭을 제거,  줄바꿈과 빈 줄 그대로 유지."
+       (interactive "r")
+       (save-excursion
+	 (save-restriction
+	   (narrow-to-region start end)
+	   (goto-char (point-min))
+	   (while (re-search-forward "[ \t]+$" nil t)
+             (replace-match "")))))
 
-(defun my/delete-trailling-whitespace-line-join (&optional start end)
-  "줄끝의 줄바꿈을 공백으로 대체하고 줄(라인) 연결, 연속된 빈 줄을 하나로 줄여 유지"
- (interactive)
-  (let* ((use-region (use-region-p))
-         (start (if use-region (region-beginning) (point-min)))
-         (end (if use-region (region-end) (point-max))))
-    (save-excursion
-      (save-restriction
-        (narrow-to-region start end)
-        (goto-char (point-min))
-        (while (re-search-forward "\\([^\n]\\)\\(\n\\)\\([^\n]\\)" nil t)
-          (replace-match "\\1 \\3"))
-        (goto-char (point-min))
-        (while (re-search-forward "\n\n+" nil t)
-          (replace-match "\n\n"))))))
-    #+end_src
-   
+     (defun my/delete-trailling-whitespace-line-join (&optional start end)
+       "줄끝의 줄바꿈을 공백으로 대체하고 줄(라인) 연결, 연속된 빈 줄을 하나로 줄여 유지"
+      (interactive)
+       (let* ((use-region (use-region-p))
+              (start (if use-region (region-beginning) (point-min)))
+              (end (if use-region (region-end) (point-max))))
+	 (save-excursion
+	   (save-restriction
+             (narrow-to-region start end)
+             (goto-char (point-min))
+             (while (re-search-forward "\\([^\n]\\)\\(\n\\)\\([^\n]\\)" nil t)
+               (replace-match "\\1 \\3"))
+             (goto-char (point-min))
+             (while (re-search-forward "\n\n+" nil t)
+               (replace-match "\n\n"))))))
+      #+end_src
 * GITHUB
 ** github.io 입문
-*** Create a repository
-    - username.github.io
-    - 나머지는 기본값 유지
-*** Clone the repository
+   - Create a repository
+     + username.github.io
+     + 나머지는 기본값 유지
+   - Clone the repository
     #+begin_src 
     - git clone git@github.com:username/username.github.io
     #+end_src
-*** add an index.html file
-    #+begin_src
-    - cd username.github.io
-    - echo "Hello World" > index.html
-    #+end_src
-*** Push it
+   - add an index.html file
+   #+begin_src
+   - cd username.github.io
+   - echo "Hello World" > index.html
+   #+end_src
+   -  Push it
     #+begin_src 
     - git add --all
     - git commit -m "Initial commit"
@@ -103,8 +102,8 @@
     #+end_src
 ** github 입문
    - 새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
-   - cd ~/Dropbox/Docs
-   - repository 만든 후 안내 내용
+     + cd ~/Dropbox/Docs
+     + repository 만든 후 안내 내용
     
    #+begin_src 
      $ echo "# Docs" >> README.md
@@ -115,8 +114,7 @@
      $ git remote add origin git@github.com:hy36370637/Docs.git
      $ git push -u origin main
    #+end_src
-
-** Git 개념
+** git 개념
 *** Git 저장소 생성
     - 폴더와 Git 저장소
       + 일반적인 폴더와 Git 저장소(repository) 차이:  숨겨진 영역 여부
@@ -171,12 +169,14 @@
     - 저장소 폴더의 최상위 디렉터리에 위치해야 함
     - Git에서 관리하지 않는 파일들의 목록
     - .gitignore 파일 표기법
-      + # : 주석
-      + ! : 제외하지 않는 파일, 필요한 파일 앞
-      + * : 모든 문자열
-	+ 예: !config.php(config.php제외).
+      #+begin_src 
+      # : 주석
+      ! : 제외하지 않는 파일, 필요한 파일 앞
+      * : 모든 문자열
+      예: !config.php(config.php제외).
 	  /pub/(/pub/ 디렉터리 안의 모든 것을 제외).
 	  doc/**/*.txt(doc 디렉터리 아래의 모든 .txt 파일 제외)
+      #+end_src
 *** Git 저장소 복제
     - 초기화 명령(git init) : 새 저장소를 생성하는 방법 중 하나( 직접 로컬 컴퓨터에 명령어 실행하여 저장소 생성하는 방법)
     - Git 저장소 복제 : 외부의 기존 프로젝트(깃허브)를 기반으로 저장소 생성하는 것
@@ -189,5 +189,5 @@
     #+end_src
 
 * 환경
-** emacs for macOS
-   - Macbook Air(M1,  macOS 14.6.1),   - emacs-version: 31.0.50,    - org-version : 9.7.10
+  - emacs for macOS
+    + Macbook Air(M1,  macOS 14.6.1),   - emacs-version: 31.0.50,    - org-version : 9.7.10
