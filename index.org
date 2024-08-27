@@ -1,6 +1,6 @@
 #+SETUPFILE: ./post/html_header.txt
-#+TITLE: Emacs for macos usage
-#+AUTHOR:  HO YOUNG
+#+TITLE: Emacs for macOS usage
+#+AUTHOR:  HO Young Kim
 #+OPTIONS: html-style:nil html-scripts:nil html-list-type:unordered num:nil toc:2 H:5
 * EMACS
 ** 한글맞춤법
