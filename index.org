@@ -191,3 +191,4 @@
 * 환경
   - emacs for macOS
     + Macbook Air(M1,  macOS 14.6.1),   - emacs-version: 31.0.50,    - org-version : 9.7.10
+  - [[https://github.com/hy36370637/BuildEmacs][BuilderScript]] Repository
