@@ -4,47 +4,6 @@
 #+OPTIONS: html-style:nil html-scripts:nil html-list-type:unordered num:nil toc:2 H:5
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./post/custom-style.css" />
 #+HTML_HEAD: <script src="./post/folding-script.js"></script>
-* 환경
-** Macbook
-   - Macbook Air(M1),  macOS 14.6.1
-** EMACS
-   - emacs-version: 31.0.50,  자체 컴파일
-   - org-version : 9.7.10
-* GITHUB
-** github.io 입문
-*** Create a repository
-    - username.github.io
-    - 나머지는 기본값 유지
-*** Clone the repository
-    #+begin_src 
-    - git clone git@github.com:username/username.github.io
-    #+end_src
-*** add an index.html file
-    #+begin_src
-    - cd username.github.io
-    - echo "Hello World" > index.html
-    #+end_src
-*** Push it
-    #+begin_src 
-    - git add --all
-    - git commit -m "Initial commit"
-    - git push -u origin main
-    #+end_src
-** Github 입문
-   - 새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
-   - cd ~/Dropbox/Docs
-   - repository 만든 후 안내 내용
-    
-   #+begin_src 
-     $ echo "# Docs" >> README.md
-     $ git init
-     $ git add README.md   → git add .
-     $ git commit -m "first commit"
-     $ git branch -M main
-     $ git remote add origin git@github.com:hy36370637/Docs.git
-     $ git push -u origin main
-   #+end_src
-
 * EMACS
 ** 한글맞춤법
 *** hunspell 설치
@@ -93,7 +52,7 @@
     (interactive)
     (ispell-buffer))
     #+end_src
-** emacs 함수
+** Function
 *** trailing-whitespace 관련
      - 문장 끝의 줄바꿈 표시를 공백으로 대체하여 문장을 연결하고 빈 줄은 유지하는 함수
     #+begin_src emacs-lisp
@@ -124,3 +83,41 @@
           (replace-match "\n\n"))))))
     #+end_src
    
+* GITHUB
+** github.io 입문
+*** Create a repository
+    - username.github.io
+    - 나머지는 기본값 유지
+*** Clone the repository
+    #+begin_src 
+    - git clone git@github.com:username/username.github.io
+    #+end_src
+*** add an index.html file
+    #+begin_src
+    - cd username.github.io
+    - echo "Hello World" > index.html
+    #+end_src
+*** Push it
+    #+begin_src 
+    - git add --all
+    - git commit -m "Initial commit"
+    - git push -u origin main
+    #+end_src
+** github 입문
+   - 새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
+   - cd ~/Dropbox/Docs
+   - repository 만든 후 안내 내용
+    
+   #+begin_src 
+     $ echo "# Docs" >> README.md
+     $ git init
+     $ git add README.md   → git add .
+     $ git commit -m "first commit"
+     $ git branch -M main
+     $ git remote add origin git@github.com:hy36370637/Docs.git
+     $ git push -u origin main
+   #+end_src
+
+* 환경
+** emacs for macOS
+   - Macbook Air(M1,  macOS 14.6.1),   - emacs-version: 31.0.50,    - org-version : 9.7.10
