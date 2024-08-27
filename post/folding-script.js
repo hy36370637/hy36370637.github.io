@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const headers = document.querySelectorAll('.outline-3 > h3');
     const body = document.body;
+    const tableOfContents = document.getElementById('table-of-contents');
 
     // Add menu toggle button
     const menuToggle = document.createElement('button');
@@ -8,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     menuToggle.textContent = '☰';
     body.insertBefore(menuToggle, body.firstChild);
 
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         body.classList.toggle('menu-open');
     });
 
@@ -20,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         toggleBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             this.textContent = this.textContent === '[+]' ? '[-]' : '[+]';
             let nextSibling = header.nextElementSibling;
             while (nextSibling && !nextSibling.matches('h3, h4, h5')) {
@@ -29,9 +32,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Handle link clicks in the table of contents
+    tableOfContents.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            e.stopPropagation();
+            if (window.innerWidth <= 768) {
+                body.classList.remove('menu-open');
+            }
+        }
+    });
+
     // Close menu when clicking outside on mobile
     document.addEventListener('click', function(event) {
-        const isClickInsideMenu = document.getElementById('table-of-contents').contains(event.target);
+        const isClickInsideMenu = tableOfContents.contains(event.target);
         const isClickOnMenuToggle = event.target.id === 'menu-toggle';
         
         if (!isClickInsideMenu && !isClickOnMenuToggle && body.classList.contains('menu-open')) {
