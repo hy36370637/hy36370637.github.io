@@ -1,10 +1,12 @@
 :root {
     --bg-color: #ffffff;
     --text-color: #333333;
-    --link-color: #0000ff;
+    --link-color: #0066cc;
+    --link-hover-color: #004080;
     --toc-bg: #f8f8f8;
     --toc-text: #333333;
     --pre-bg: #f4f4f4;
+    --code-bg: #f4f4f4;
     --border-color: #dddddd;
     --toggle-color: #666666;
 }
@@ -12,10 +14,12 @@
 [data-theme="dark"] {
     --bg-color: #1a1a1a;
     --text-color: #e0e0e0;
-    --link-color: #6699ff;
+    --link-color: #66b3ff;
+    --link-hover-color: #99ccff;
     --toc-bg: #2a2a2a;
     --toc-text: #ffffff;
     --pre-bg: #333333;
+    --code-bg: #2c2c2c;
     --border-color: #444444;
     --toggle-color: #999999;
 }
@@ -26,6 +30,17 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
 }
 
 #table-of-contents {
@@ -44,11 +59,10 @@ body {
 
 #table-of-contents a {
     color: var(--toc-text);
-    text-decoration: none;
 }
 
 #table-of-contents a:hover {
-    text-decoration: underline;
+    color: var(--link-hover-color);
 }
 
 #table-of-contents ul {
@@ -112,16 +126,24 @@ h2, h3, h4, h5 {
 }
 
 pre {
-    background-color: var(--pre-bg);
+    background-color: var(--code-bg);
     border: 1px solid var(--border-color);
     border-radius: 3px;
     padding: 10px;
     overflow-x: auto;
+    color: var(--text-color);
+    line-height: 1.9;
 }
 
 code {
     font-family: Consolas, Monaco, 'Andale Mono', monospace;
     font-size: 0.9em;
+    color: var(--text-color);
+}
+
+pre code {
+    display: block;
+    padding: 0.65em 0;
 }
 
 #menu-toggle, #dark-mode-toggle {
