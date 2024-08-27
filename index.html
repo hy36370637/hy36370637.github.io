@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-27 화 20:19 -->
+<!-- 2024-08-27 화 20:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs for macOS usage</title>
@@ -79,44 +79,44 @@ outline: none;
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org53a0bce">EMACS</a>
+<li><a href="#orgee9b7a3">EMACS</a>
 <ul>
-<li><a href="#org7ab48ea">한글맞춤법</a></li>
-<li><a href="#orgdc9e2cd">Function</a></li>
+<li><a href="#orgbd741b9">한글맞춤법</a></li>
+<li><a href="#org97399f2">Function</a></li>
 </ul>
 </li>
-<li><a href="#orgef91271">GITHUB</a>
+<li><a href="#org66a19ab">GITHUB</a>
 <ul>
-<li><a href="#orgd89df06">github.io 입문</a></li>
-<li><a href="#org4616180">github 입문</a></li>
-<li><a href="#orgcc55362">git 개념</a></li>
-<li><a href="#org9281a09">Magit</a></li>
+<li><a href="#org7929604">github.io 입문</a></li>
+<li><a href="#org60b51bb">github 입문</a></li>
+<li><a href="#org0aa81d0">git 개념</a></li>
+<li><a href="#org3d17033">Magit</a></li>
 </ul>
 </li>
-<li><a href="#orgca7a937">환경</a></li>
+<li><a href="#org28e3605">환경</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org53a0bce" class="outline-2">
-<h2 id="org53a0bce">EMACS</h2>
-<div class="outline-text-2" id="text-org53a0bce">
+<div id="outline-container-orgee9b7a3" class="outline-2">
+<h2 id="orgee9b7a3">EMACS</h2>
+<div class="outline-text-2" id="text-orgee9b7a3">
 </div>
-<div id="outline-container-org7ab48ea" class="outline-3">
-<h3 id="org7ab48ea">한글맞춤법</h3>
-<div class="outline-text-3" id="text-org7ab48ea">
+<div id="outline-container-orgbd741b9" class="outline-3">
+<h3 id="orgbd741b9">한글맞춤법</h3>
+<div class="outline-text-3" id="text-orgbd741b9">
 </div>
-<div id="outline-container-orgb47dc92" class="outline-4">
-<h4 id="orgb47dc92">hunspell 설치</h4>
-<div class="outline-text-4" id="text-orgb47dc92">
+<div id="outline-container-org56499a5" class="outline-4">
+<h4 id="org56499a5">hunspell 설치</h4>
+<div class="outline-text-4" id="text-org56499a5">
 <div class="org-src-container">
 <pre class="src src-nil">    brew install hunspell
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org7017050" class="outline-4">
-<h4 id="org7017050">한국어 사전 다운로드</h4>
-<div class="outline-text-4" id="text-org7017050">
+<div id="outline-container-org462709f" class="outline-4">
+<h4 id="org462709f">한국어 사전 다운로드</h4>
+<div class="outline-text-4" id="text-org462709f">
 <p>
 <a href="https://github.com/spellcheck-ko/hunspell-dict-ko/releases">https://github.com/spellcheck-ko/hunspell-dict-ko/releases</a>
 </p>
@@ -125,9 +125,9 @@ outline: none;
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd47930f" class="outline-4">
-<h4 id="orgd47930f">사전 파일 설치</h4>
-<div class="outline-text-4" id="text-orgd47930f">
+<div id="outline-container-org372febd" class="outline-4">
+<h4 id="org372febd">사전 파일 설치</h4>
+<div class="outline-text-4" id="text-org372febd">
 <p>
 다운로드한 사전 파일을 Hunspell이 인식할 수 있는 디렉토리에 복사. 보통 ~/Library/Spelling/ 디렉토리를 사용
 </p>
@@ -139,9 +139,9 @@ outline: none;
 </div>
 </div>
 </div>
-<div id="outline-container-org6ba08c7" class="outline-4">
-<h4 id="org6ba08c7">Emacs 설정</h4>
-<div class="outline-text-4" id="text-org6ba08c7">
+<div id="outline-container-orgc66f43e" class="outline-4">
+<h4 id="orgc66f43e">Emacs 설정</h4>
+<div class="outline-text-4" id="text-orgc66f43e">
 <ul class="org-ul">
 <li>( ~/.emacs.d/init.el)에 Hunspell과 한국어 사전을 사용할 수 있도록 설정</li>
 </ul>
@@ -169,17 +169,17 @@ outline: none;
 </div>
 </div>
 </div>
-<div id="outline-container-org359fb6d" class="outline-4">
-<h4 id="org359fb6d">flyspell 모드 사용</h4>
-<div class="outline-text-4" id="text-org359fb6d">
+<div id="outline-container-org2faa404" class="outline-4">
+<h4 id="org2faa404">flyspell 모드 사용</h4>
+<div class="outline-text-4" id="text-org2faa404">
 <ul class="org-ul">
 <li>Emacs에서 Flyspell 모드를 사용하여 실시간 맞춤법 검사. 텍스트 모드나 프로그래밍 모드에서 자동 활성화</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org17c3396" class="outline-4">
-<h4 id="org17c3396">한글맞춤법 수동검사</h4>
-<div class="outline-text-4" id="text-org17c3396">
+<div id="outline-container-org78318e0" class="outline-4">
+<h4 id="org78318e0">한글맞춤법 수동검사</h4>
+<div class="outline-text-4" id="text-org78318e0">
 <div class="org-src-container">
 <pre class="src src-nil">    ;; 맞춤법 검사 - 수동 검사
     (defun my-hunspell-check ()
@@ -191,9 +191,9 @@ outline: none;
 </div>
 </div>
 </div>
-<div id="outline-container-orgdc9e2cd" class="outline-3">
-<h3 id="orgdc9e2cd">Function</h3>
-<div class="outline-text-3" id="text-orgdc9e2cd">
+<div id="outline-container-org97399f2" class="outline-3">
+<h3 id="org97399f2">Function</h3>
+<div class="outline-text-3" id="text-org97399f2">
 <ul class="org-ul">
 <li><p>
 trailing-whitespace 관련
@@ -233,13 +233,13 @@ trailing-whitespace 관련
 </div>
 </div>
 </div>
-<div id="outline-container-orgef91271" class="outline-2">
-<h2 id="orgef91271">GITHUB</h2>
-<div class="outline-text-2" id="text-orgef91271">
+<div id="outline-container-org66a19ab" class="outline-2">
+<h2 id="org66a19ab">GITHUB</h2>
+<div class="outline-text-2" id="text-org66a19ab">
 </div>
-<div id="outline-container-orgd89df06" class="outline-3">
-<h3 id="orgd89df06">github.io 입문</h3>
-<div class="outline-text-3" id="text-orgd89df06">
+<div id="outline-container-org7929604" class="outline-3">
+<h3 id="org7929604">github.io 입문</h3>
+<div class="outline-text-3" id="text-org7929604">
 <ul class="org-ul">
 <li>Create a repository
 <ul class="org-ul">
@@ -273,9 +273,9 @@ Push it
 </ul>
 </div>
 </div>
-<div id="outline-container-org4616180" class="outline-3">
-<h3 id="org4616180">github 입문</h3>
-<div class="outline-text-3" id="text-org4616180">
+<div id="outline-container-org60b51bb" class="outline-3">
+<h3 id="org60b51bb">github 입문</h3>
+<div class="outline-text-3" id="text-org60b51bb">
 <ul class="org-ul">
 <li>새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
 <ul class="org-ul">
@@ -296,13 +296,13 @@ Push it
 </div>
 </div>
 </div>
-<div id="outline-container-orgcc55362" class="outline-3">
-<h3 id="orgcc55362">git 개념</h3>
-<div class="outline-text-3" id="text-orgcc55362">
+<div id="outline-container-org0aa81d0" class="outline-3">
+<h3 id="org0aa81d0">git 개념</h3>
+<div class="outline-text-3" id="text-org0aa81d0">
 </div>
-<div id="outline-container-org516216a" class="outline-4">
-<h4 id="org516216a">Git 저장소 생성</h4>
-<div class="outline-text-4" id="text-org516216a">
+<div id="outline-container-orgcb5d497" class="outline-4">
+<h4 id="orgcb5d497">Git 저장소 생성</h4>
+<div class="outline-text-4" id="text-orgcb5d497">
 <ul class="org-ul">
 <li>폴더와 Git 저장소
 <ul class="org-ul">
@@ -322,9 +322,9 @@ Push it
 </ul>
 </div>
 </div>
-<div id="outline-container-org6547758" class="outline-4">
-<h4 id="org6547758">워킹 디렉터리</h4>
-<div class="outline-text-4" id="text-org6547758">
+<div id="outline-container-orgb8fcb14" class="outline-4">
+<h4 id="orgb8fcb14">워킹 디렉터리</h4>
+<div class="outline-text-4" id="text-orgb8fcb14">
 <ul class="org-ul">
 <li>워킹 디렉터리(워킹 트리)란?  - 논리적으로 공간을 분리하여 Git의 동작과 이력 효율적 처리
 <ul class="org-ul">
@@ -350,9 +350,9 @@ Push it
 </ul>
 </div>
 </div>
-<div id="outline-container-org42d5748" class="outline-4">
-<h4 id="org42d5748">스테이지(stage)</h4>
-<div class="outline-text-4" id="text-org42d5748">
+<div id="outline-container-orgf56e656" class="outline-4">
+<h4 id="orgf56e656">스테이지(stage)</h4>
+<div class="outline-text-4" id="text-orgf56e656">
 <ul class="org-ul">
 <li>stage=임시 영역
 <ul class="org-ul">
@@ -392,9 +392,9 @@ Push it
 </ul>
 </div>
 </div>
-<div id="outline-container-org5da03c5" class="outline-4">
-<h4 id="org5da03c5">파일의 상태 확인</h4>
-<div class="outline-text-4" id="text-org5da03c5">
+<div id="outline-container-org385dfa1" class="outline-4">
+<h4 id="org385dfa1">파일의 상태 확인</h4>
+<div class="outline-text-4" id="text-org385dfa1">
 <ul class="org-ul">
 <li><p>
 status 명령어: Git 상태 확인
@@ -406,9 +406,9 @@ status 명령어: Git 상태 확인
 </ul>
 </div>
 </div>
-<div id="outline-container-org9253679" class="outline-4">
-<h4 id="org9253679">파일 관리 목록에서 제외: .gitignore</h4>
-<div class="outline-text-4" id="text-org9253679">
+<div id="outline-container-org57a50bd" class="outline-4">
+<h4 id="org57a50bd">파일 관리 목록에서 제외: .gitignore</h4>
+<div class="outline-text-4" id="text-org57a50bd">
 <ul class="org-ul">
 <li>저장소 폴더의 최상위 디렉터리에 위치해야 함</li>
 <li>Git에서 관리하지 않는 파일들의 목록</li>
@@ -427,9 +427,9 @@ status 명령어: Git 상태 확인
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf83014a" class="outline-4">
-<h4 id="orgf83014a">Git 저장소 복제</h4>
-<div class="outline-text-4" id="text-orgf83014a">
+<div id="outline-container-org05eb0c5" class="outline-4">
+<h4 id="org05eb0c5">Git 저장소 복제</h4>
+<div class="outline-text-4" id="text-org05eb0c5">
 <ul class="org-ul">
 <li>초기화 명령(git init) : 새 저장소를 생성하는 방법 중 하나( 직접 로컬 컴퓨터에 명령어 실행하여 저장소 생성하는 방법)</li>
 <li>Git 저장소 복제 : 외부의 기존 프로젝트(깃허브)를 기반으로 저장소 생성하는 것</li>
@@ -447,39 +447,31 @@ status 명령어: Git 상태 확인
 </div>
 </div>
 </div>
-<div id="outline-container-org9281a09" class="outline-3">
-<h3 id="org9281a09">Magit</h3>
-<div class="outline-text-3" id="text-org9281a09">
+<div id="outline-container-org3d17033" class="outline-3">
+<h3 id="org3d17033">Magit</h3>
+<div class="outline-text-3" id="text-org3d17033">
 <ul class="org-ul">
-<li>소개</li>
-</ul>
-<p>
+<li><p>
+소개
 magit은 Emacs를 위한 강력한 Git 인터페이스 패키지입니다. 이 패키지는 Git 버전 관리 시스템을 Emacs 내에서 효율적으로 사용할 수 있게 해줍니다. 주요 특징은 다음과 같습니다:
 </p>
 <ol class="org-ol">
 <li>직관적인 인터페이스: Git 작업을 위한 키 바인딩과 메뉴를 제공합니다.</li>
 </ol>
-
 <p>
 2 . 상태 보기: 현재 Git 저장소의 상태를 쉽게 확인할 수 있습니다.
 </p>
-
 <ol class="org-ol">
 <li>스테이징: 파일의 변경 사항을 쉽게 스테이징하고 언스테이징할 수 있습니다.</li>
-
 <li>커밋: 변경 사항을 빠르게 커밋할 수 있습니다.</li>
-
 <li>브랜치 관리: 브랜치 생성, 전환, 병합 등을 쉽게 수행할 수 있습니다.</li>
-
 <li>로그 보기: Git 히스토리를 보기 쉽게 표시합니다.</li>
-
 <li>리베이스, 체리픽 등: 고급 Git 기능도 지원합니다.</li>
 </ol>
 
 <p>
 magit을 사용하면 Git 명령어를 직접 입력하지 않고도 대부분의 Git 작업을 Emacs 내에서 수행할 수 있어, 개발 워크플로우를 크게 향상시킬 수 있습니다.
-</p>
-<ul class="org-ul">
+</p></li>
 <li>설정</li>
 </ul>
 <div class="org-src-container">
@@ -493,9 +485,9 @@ magit을 사용하면 Git 명령어를 직접 입력하지 않고도 대부분�
 </div>
 </div>
 </div>
-<div id="outline-container-orgca7a937" class="outline-2">
-<h2 id="orgca7a937">환경</h2>
-<div class="outline-text-2" id="text-orgca7a937">
+<div id="outline-container-org28e3605" class="outline-2">
+<h2 id="org28e3605">환경</h2>
+<div class="outline-text-2" id="text-org28e3605">
 <ul class="org-ul">
 <li>emacs for macOS
 <ul class="org-ul">
@@ -508,7 +500,7 @@ magit을 사용하면 Git 명령어를 직접 입력하지 않고도 대부분�
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: HO Young Kim</p>
-<p class="date">Created: 2024-08-27 화 20:19</p>
+<p class="date">Created: 2024-08-27 화 20:22</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
