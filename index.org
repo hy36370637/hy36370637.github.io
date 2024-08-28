@@ -2,7 +2,8 @@
 #+TITLE: emacs for macOS usage
 #+AUTHOR:  HO Young Kim
 #+OPTIONS: html-style:nil html-scripts:nil html-list-type:unordered num:nil toc:2 H:5
-* EMACS
+* emacs
+  - [[https://github.com/hy36370637/Dotemacs][emacs 설정 repository]]
 ** 한글맞춤법
 *** hunspell 설치
     #+begin_src 
@@ -80,8 +81,8 @@
              (while (re-search-forward "\n\n+" nil t)
                (replace-match "\n\n"))))))
       #+end_src
-** 자동완성 기능 패키지
-   - Hippie Expand : 내장 패키지
+** 자동완성
+   - Hippie Expand 
      + dabbrev와 유사하지만 더 강력하고 유연한 기능을 제공하는 자동 완성 기능
      + 기본적으로 M-/ 키에 바인딩. 입력 도중 단축키 눌러 입력 편의 도움
        #+begin_src emacs-lisp
@@ -124,8 +125,8 @@
       (setq he-expand-list (cdr he-expand-list))
       t)))
        #+end_src   
-   - abbrev : 내장 패키지
-     + Emacs의 내장 기능 중 하나로 사용자가 정의한 약어를 자동으로 확장해주는 기능을 제공
+     + abbrev
+     + Emacs의 내장 기능. 사용자가 정의한 약어 → 자동 변환
      + 예를 들어, "mymail"를 입력하면 자동으로 "000@mail.com"로 변환
        #+begin_src emacs-lisp
 (use-package abbrev
@@ -155,40 +156,7 @@
 	)))
   )
        #+end_src
-* GITHUB
-** github.io 입문
-   - Create a repository
-     + username.github.io
-     + 나머지는 기본값 유지
-   - Clone the repository
-    #+begin_src 
-    - git clone git@github.com:username/username.github.io
-    #+end_src
-   - add an index.html file
-   #+begin_src
-   - cd username.github.io
-   - echo "Hello World" > index.html
-   #+end_src
-   -  Push it
-    #+begin_src 
-    - git add --all
-    - git commit -m "Initial commit"
-    - git push -u origin main
-    #+end_src
-** github 입문
-   - 새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
-     + cd ~/Dropbox/Docs
-     + repository 만든 후 안내 내용
-    
-   #+begin_src 
-     $ echo "# Docs" >> README.md
-     $ git init
-     $ git add README.md   → git add .
-     $ git commit -m "first commit"
-     $ git branch -M main
-     $ git remote add origin git@github.com:hy36370637/Docs.git
-     $ git push -u origin main
-   #+end_src
+* github
 ** git 개념
 *** Git 저장소 생성
     - 폴더와 Git 저장소
@@ -262,7 +230,40 @@
     #+begin_src 
     $ git clone 원격저장소URL 새폴더이름
     #+end_src
-** magit 소개
+** github 입문
+   - 새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
+     + cd ~/Dropbox/Docs
+     + repository 만든 후 안내 내용
+    
+   #+begin_src 
+     $ echo "# Docs" >> README.md
+     $ git init
+     $ git add README.md   → git add .
+     $ git commit -m "first commit"
+     $ git branch -M main
+     $ git remote add origin git@github.com:hy36370637/Docs.git
+     $ git push -u origin main
+   #+end_src
+** github.io 입문
+   - Create a repository
+     + username.github.io
+     + 나머지는 기본값 유지
+   - Clone the repository
+    #+begin_src 
+    - git clone git@github.com:username/username.github.io
+    #+end_src
+   - add an index.html file
+   #+begin_src
+   - cd username.github.io
+   - echo "Hello World" > index.html
+   #+end_src
+   -  Push it
+    #+begin_src 
+    - git add --all
+    - git commit -m "Initial commit"
+    - git push -u origin main
+    #+end_src
+** magit
    magit은 Emacs를 위한 강력한 Git 인터페이스 패키지입니다. 이 패키지는 Git 버전 관리 시스템을 Emacs 내에서 효율적으로 사용할 수 있게 해줌
      1. 직관적인 인터페이스: Git 작업을 위한 키 바인딩과 메뉴를 제공합니다.
      2. 상태 보기: 현재 Git 저장소의 상태를 쉽게 확인할 수 있습니다.
