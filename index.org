@@ -2,8 +2,7 @@
 #+TITLE: emacs for macOS usage
 #+AUTHOR:  HO Young Kim
 #+OPTIONS: html-style:nil html-scripts:nil html-list-type:unordered num:nil toc:2 H:5
-* emacs
-  - [[https://github.com/hy36370637/Dotemacs][emacs 설정 repository]]
+* emacs  - [[https://github.com/hy36370637/Dotemacs][emacs 설정 repository]]
 ** 한글맞춤법
 *** hunspell 설치
     #+begin_src 
