@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-27 화 20:28 -->
+<!-- 2024-08-28 수 17:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Emacs for macOS usage</title>
+<title>emacs for macOS usage</title>
 <meta name="author" content="HO Young Kim" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -74,49 +74,50 @@ outline: none;
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Emacs for macOS usage</h1>
+<h1 class="title">emacs for macOS usage</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org727f639">EMACS</a>
+<li><a href="#org7b117bb">EMACS</a>
 <ul>
-<li><a href="#orgd0788ab">한글맞춤법</a></li>
-<li><a href="#org1a71442">Function</a></li>
+<li><a href="#org7c7c510">한글맞춤법</a></li>
+<li><a href="#org8ef4f90">Function</a></li>
+<li><a href="#org255912a">자동완성 기능 패키지</a></li>
 </ul>
 </li>
-<li><a href="#org0105847">GITHUB</a>
+<li><a href="#org74fd55b">GITHUB</a>
 <ul>
-<li><a href="#org25ea33d">github.io 입문</a></li>
-<li><a href="#orgea18ca1">github 입문</a></li>
-<li><a href="#org167469a">git 개념</a></li>
-<li><a href="#org3c3b220">magit</a></li>
+<li><a href="#org098bb44">github.io 입문</a></li>
+<li><a href="#orge638c9c">github 입문</a></li>
+<li><a href="#org81af460">git 개념</a></li>
+<li><a href="#org463e22d">magit 소개</a></li>
 </ul>
 </li>
-<li><a href="#orgd2aa9bc">환경</a></li>
+<li><a href="#org4d7aa60">환경</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org727f639" class="outline-2">
-<h2 id="org727f639">EMACS</h2>
-<div class="outline-text-2" id="text-org727f639">
+<div id="outline-container-org7b117bb" class="outline-2">
+<h2 id="org7b117bb">EMACS</h2>
+<div class="outline-text-2" id="text-org7b117bb">
 </div>
-<div id="outline-container-orgd0788ab" class="outline-3">
-<h3 id="orgd0788ab">한글맞춤법</h3>
-<div class="outline-text-3" id="text-orgd0788ab">
+<div id="outline-container-org7c7c510" class="outline-3">
+<h3 id="org7c7c510">한글맞춤법</h3>
+<div class="outline-text-3" id="text-org7c7c510">
 </div>
-<div id="outline-container-org327d890" class="outline-4">
-<h4 id="org327d890">hunspell 설치</h4>
-<div class="outline-text-4" id="text-org327d890">
+<div id="outline-container-org19a896c" class="outline-4">
+<h4 id="org19a896c">hunspell 설치</h4>
+<div class="outline-text-4" id="text-org19a896c">
 <div class="org-src-container">
 <pre class="src src-nil">    brew install hunspell
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orge178d4a" class="outline-4">
-<h4 id="orge178d4a">한국어 사전 다운로드</h4>
-<div class="outline-text-4" id="text-orge178d4a">
+<div id="outline-container-org29bf9bd" class="outline-4">
+<h4 id="org29bf9bd">한국어 사전 다운로드</h4>
+<div class="outline-text-4" id="text-org29bf9bd">
 <p>
 <a href="https://github.com/spellcheck-ko/hunspell-dict-ko/releases">https://github.com/spellcheck-ko/hunspell-dict-ko/releases</a>
 </p>
@@ -125,9 +126,9 @@ outline: none;
 </ul>
 </div>
 </div>
-<div id="outline-container-orge0d05d2" class="outline-4">
-<h4 id="orge0d05d2">사전 파일 설치</h4>
-<div class="outline-text-4" id="text-orge0d05d2">
+<div id="outline-container-org028d3e5" class="outline-4">
+<h4 id="org028d3e5">사전 파일 설치</h4>
+<div class="outline-text-4" id="text-org028d3e5">
 <p>
 다운로드한 사전 파일을 Hunspell이 인식할 수 있는 디렉토리에 복사. 보통 ~/Library/Spelling/ 디렉토리를 사용
 </p>
@@ -139,9 +140,9 @@ outline: none;
 </div>
 </div>
 </div>
-<div id="outline-container-orge850a85" class="outline-4">
-<h4 id="orge850a85">Emacs 설정</h4>
-<div class="outline-text-4" id="text-orge850a85">
+<div id="outline-container-org276b3e6" class="outline-4">
+<h4 id="org276b3e6">Emacs 설정</h4>
+<div class="outline-text-4" id="text-org276b3e6">
 <ul class="org-ul">
 <li>( ~/.emacs.d/init.el)에 Hunspell과 한국어 사전을 사용할 수 있도록 설정</li>
 </ul>
@@ -169,17 +170,17 @@ outline: none;
 </div>
 </div>
 </div>
-<div id="outline-container-org4170f4b" class="outline-4">
-<h4 id="org4170f4b">flyspell 모드 사용</h4>
-<div class="outline-text-4" id="text-org4170f4b">
+<div id="outline-container-org950125d" class="outline-4">
+<h4 id="org950125d">flyspell 모드 사용</h4>
+<div class="outline-text-4" id="text-org950125d">
 <ul class="org-ul">
 <li>Emacs에서 Flyspell 모드를 사용하여 실시간 맞춤법 검사. 텍스트 모드나 프로그래밍 모드에서 자동 활성화</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc805f47" class="outline-4">
-<h4 id="orgc805f47">한글맞춤법 수동검사</h4>
-<div class="outline-text-4" id="text-orgc805f47">
+<div id="outline-container-org360849a" class="outline-4">
+<h4 id="org360849a">한글맞춤법 수동검사</h4>
+<div class="outline-text-4" id="text-org360849a">
 <div class="org-src-container">
 <pre class="src src-nil">    ;; 맞춤법 검사 - 수동 검사
     (defun my-hunspell-check ()
@@ -191,9 +192,9 @@ outline: none;
 </div>
 </div>
 </div>
-<div id="outline-container-org1a71442" class="outline-3">
-<h3 id="org1a71442">Function</h3>
-<div class="outline-text-3" id="text-org1a71442">
+<div id="outline-container-org8ef4f90" class="outline-3">
+<h3 id="org8ef4f90">Function</h3>
+<div class="outline-text-3" id="text-org8ef4f90">
 <ul class="org-ul">
 <li><p>
 trailing-whitespace 관련
@@ -232,14 +233,105 @@ trailing-whitespace 관련
 </ul>
 </div>
 </div>
+<div id="outline-container-org255912a" class="outline-3">
+<h3 id="org255912a">자동완성 기능 패키지</h3>
+<div class="outline-text-3" id="text-org255912a">
+<ul class="org-ul">
+<li>Hippie Expand : 내장 패키지
+<ul class="org-ul">
+<li>dabbrev와 유사하지만 더 강력하고 유연한 기능을 제공하는 자동 완성 기능</li>
+<li><p>
+기본적으로 M-/ 키에 바인딩. 입력 도중 단축키 눌러 입력 편의 도움
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package hippie-exp
+  :ensure nil  ; built-in
+  :bind ("M-/" . hippie-expand) 
+  :hook (org-mode . (lambda ()
+                      (make-local-variable 'hippie-expand-try-functions-list)
+                      (add-to-list 'hippie-expand-try-functions-list 'try-expand-org-keyword t)))
+  :config
+  (setq hippie-expand-try-functions-list
+        '(try-expand-dabbrev
+          try-expand-dabbrev-all-buffers
+          try-expand-dabbrev-from-kill
+          try-complete-lisp-symbol-partially
+          try-complete-lisp-symbol
+          try-expand-whole-kill
+          try-expand-list
+          try-expand-line
+          try-complete-file-name-partially
+          try-complete-file-name))
+  ;; 특정 모드 무시 설정 (참고용으로만 유지, 실제로는 사용되지 않음)
+  (setq hippie-expand-ignore-buffers
+        '(archive-mode image-mode doc-view-mode pdf-view-mode tags-table-mode))
+  ;; for org-mode 
+  (defun try-expand-org-keyword (old)
+    "Org-mode 키워드 완성 함수"
+    (unless old
+      (he-init-string (he-dabbrev-beg) (point))
+      (setq he-expand-list
+            (let ((completion-ignore-case t))
+              (all-completions he-search-string org-keywords))))
+    (while (and he-expand-list
+                (he-string-member (car he-expand-list) he-tried-table))
+      (setq he-expand-list (cdr he-expand-list)))
+    (if (null he-expand-list)
+        (progn (when old (he-reset-string))
+               nil)
+      (he-substitute-string (car he-expand-list))
+      (setq he-expand-list (cdr he-expand-list))
+      t)))
+</pre>
+</div></li>
+</ul></li>
+<li>abbrev : 내장 패키지
+<ul class="org-ul">
+<li>Emacs의 내장 기능 중 하나로 사용자가 정의한 약어를 자동으로 확장해주는 기능을 제공</li>
+<li><p>
+예를 들어, "mymail"를 입력하면 자동으로 "000@mail.com"로 변환
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package abbrev
+  :ensure nil				;built-in
+  :config
+  (setq-default abbrev-mode t)
+  (setq save-abbrevs nil)
+  ;; (setq save-abbrevs 'silently)        ;; save abbrevs when files are saved
+  (abbrev-table-put global-abbrev-table :regexp "\\(?:^\\|[\t\s]+\\)\\(?1:[:;_].*\\|.*\\)")
+  (define-abbrev-table 'global-abbrev-table 
+    '(("m2"  "㎡")   ("km"  "㎞")  ("lDot" "……") 
+      ("cX"    "×")   ("cB"   "※")  ("lDash" "―")
+      ("lG"    "「")   ("rG"    "」")
+      ("llG"  "『")   ("rrG"   "』")
+      ("cZ"   "○")   ("cQ"   "□")
+      ))
+;; Org 모드 약어 테이블 설정
+  (with-eval-after-load 'org
+    (define-abbrev-table 'org-mode-abbrev-table
+      '(("Dsc" "#+DESCRIPTION: ")
+	("Author" "#+AUTHOR: ")
+	("Keyword" "#+KEYWORDS: ")
+	("Setfile"   "#+SETUPFILE: setLTH/Header.org")
+	("SetfileQV"   "#+SETUPFILE: setLTH/Header_quote_verse.org")
+	("Option"  "#+OPTIONS: toc:2 num:2")
+	("Latex_header"  "#+LATEX_HEADER:")
+	)))
+  )
+</pre>
+</div></li>
+</ul></li>
+</ul>
 </div>
-<div id="outline-container-org0105847" class="outline-2">
-<h2 id="org0105847">GITHUB</h2>
-<div class="outline-text-2" id="text-org0105847">
 </div>
-<div id="outline-container-org25ea33d" class="outline-3">
-<h3 id="org25ea33d">github.io 입문</h3>
-<div class="outline-text-3" id="text-org25ea33d">
+</div>
+<div id="outline-container-org74fd55b" class="outline-2">
+<h2 id="org74fd55b">GITHUB</h2>
+<div class="outline-text-2" id="text-org74fd55b">
+</div>
+<div id="outline-container-org098bb44" class="outline-3">
+<h3 id="org098bb44">github.io 입문</h3>
+<div class="outline-text-3" id="text-org098bb44">
 <ul class="org-ul">
 <li>Create a repository
 <ul class="org-ul">
@@ -273,9 +365,9 @@ Push it
 </ul>
 </div>
 </div>
-<div id="outline-container-orgea18ca1" class="outline-3">
-<h3 id="orgea18ca1">github 입문</h3>
-<div class="outline-text-3" id="text-orgea18ca1">
+<div id="outline-container-orge638c9c" class="outline-3">
+<h3 id="orge638c9c">github 입문</h3>
+<div class="outline-text-3" id="text-orge638c9c">
 <ul class="org-ul">
 <li>새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
 <ul class="org-ul">
@@ -296,13 +388,13 @@ Push it
 </div>
 </div>
 </div>
-<div id="outline-container-org167469a" class="outline-3">
-<h3 id="org167469a">git 개념</h3>
-<div class="outline-text-3" id="text-org167469a">
+<div id="outline-container-org81af460" class="outline-3">
+<h3 id="org81af460">git 개념</h3>
+<div class="outline-text-3" id="text-org81af460">
 </div>
-<div id="outline-container-org7a67210" class="outline-4">
-<h4 id="org7a67210">Git 저장소 생성</h4>
-<div class="outline-text-4" id="text-org7a67210">
+<div id="outline-container-orge0710f7" class="outline-4">
+<h4 id="orge0710f7">Git 저장소 생성</h4>
+<div class="outline-text-4" id="text-orge0710f7">
 <ul class="org-ul">
 <li>폴더와 Git 저장소
 <ul class="org-ul">
@@ -322,9 +414,9 @@ Push it
 </ul>
 </div>
 </div>
-<div id="outline-container-org91e5d69" class="outline-4">
-<h4 id="org91e5d69">워킹 디렉터리</h4>
-<div class="outline-text-4" id="text-org91e5d69">
+<div id="outline-container-orgf7532c9" class="outline-4">
+<h4 id="orgf7532c9">워킹 디렉터리</h4>
+<div class="outline-text-4" id="text-orgf7532c9">
 <ul class="org-ul">
 <li>워킹 디렉터리(워킹 트리)란?  - 논리적으로 공간을 분리하여 Git의 동작과 이력 효율적 처리
 <ul class="org-ul">
@@ -350,9 +442,9 @@ Push it
 </ul>
 </div>
 </div>
-<div id="outline-container-org1f764ce" class="outline-4">
-<h4 id="org1f764ce">스테이지(stage)</h4>
-<div class="outline-text-4" id="text-org1f764ce">
+<div id="outline-container-org82a42fa" class="outline-4">
+<h4 id="org82a42fa">스테이지(stage)</h4>
+<div class="outline-text-4" id="text-org82a42fa">
 <ul class="org-ul">
 <li>stage=임시 영역
 <ul class="org-ul">
@@ -392,9 +484,9 @@ Push it
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc86034b" class="outline-4">
-<h4 id="orgc86034b">파일의 상태 확인</h4>
-<div class="outline-text-4" id="text-orgc86034b">
+<div id="outline-container-org48c3629" class="outline-4">
+<h4 id="org48c3629">파일의 상태 확인</h4>
+<div class="outline-text-4" id="text-org48c3629">
 <ul class="org-ul">
 <li><p>
 status 명령어: Git 상태 확인
@@ -406,9 +498,9 @@ status 명령어: Git 상태 확인
 </ul>
 </div>
 </div>
-<div id="outline-container-org5f3f2cb" class="outline-4">
-<h4 id="org5f3f2cb">파일 관리 목록에서 제외: .gitignore</h4>
-<div class="outline-text-4" id="text-org5f3f2cb">
+<div id="outline-container-orga1a651a" class="outline-4">
+<h4 id="orga1a651a">파일 관리 목록에서 제외: .gitignore</h4>
+<div class="outline-text-4" id="text-orga1a651a">
 <ul class="org-ul">
 <li>저장소 폴더의 최상위 디렉터리에 위치해야 함</li>
 <li>Git에서 관리하지 않는 파일들의 목록</li>
@@ -427,9 +519,9 @@ status 명령어: Git 상태 확인
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd6af619" class="outline-4">
-<h4 id="orgd6af619">Git 저장소 복제</h4>
-<div class="outline-text-4" id="text-orgd6af619">
+<div id="outline-container-orgd9a024f" class="outline-4">
+<h4 id="orgd9a024f">Git 저장소 복제</h4>
+<div class="outline-text-4" id="text-orgd9a024f">
 <ul class="org-ul">
 <li>초기화 명령(git init) : 새 저장소를 생성하는 방법 중 하나( 직접 로컬 컴퓨터에 명령어 실행하여 저장소 생성하는 방법)</li>
 <li>Git 저장소 복제 : 외부의 기존 프로젝트(깃허브)를 기반으로 저장소 생성하는 것</li>
@@ -447,12 +539,9 @@ status 명령어: Git 상태 확인
 </div>
 </div>
 </div>
-<div id="outline-container-org3c3b220" class="outline-3">
-<h3 id="org3c3b220">magit</h3>
-<div class="outline-text-3" id="text-org3c3b220">
-<ul class="org-ul">
-<li>소개</li>
-</ul>
+<div id="outline-container-org463e22d" class="outline-3">
+<h3 id="org463e22d">magit 소개</h3>
+<div class="outline-text-3" id="text-org463e22d">
 <p>
 magit은 Emacs를 위한 강력한 Git 인터페이스 패키지입니다. 이 패키지는 Git 버전 관리 시스템을 Emacs 내에서 효율적으로 사용할 수 있게 해줌
 </p>
@@ -483,9 +572,9 @@ magit을 사용하면 Git 명령어를 직접 입력하지 않고도 대부분�
 </div>
 </div>
 </div>
-<div id="outline-container-orgd2aa9bc" class="outline-2">
-<h2 id="orgd2aa9bc">환경</h2>
-<div class="outline-text-2" id="text-orgd2aa9bc">
+<div id="outline-container-org4d7aa60" class="outline-2">
+<h2 id="org4d7aa60">환경</h2>
+<div class="outline-text-2" id="text-org4d7aa60">
 <ul class="org-ul">
 <li>emacs for macOS
 <ul class="org-ul">
@@ -498,7 +587,7 @@ magit을 사용하면 Git 명령어를 직접 입력하지 않고도 대부분�
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: HO Young Kim</p>
-<p class="date">Created: 2024-08-27 화 20:28</p>
+<p class="date">Created: 2024-08-28 수 17:46</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

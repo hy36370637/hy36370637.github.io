@@ -1,5 +1,5 @@
 #+SETUPFILE: ./post/html_header.txt
-#+TITLE: Emacs for macOS usage
+#+TITLE: emacs for macOS usage
 #+AUTHOR:  HO Young Kim
 #+OPTIONS: html-style:nil html-scripts:nil html-list-type:unordered num:nil toc:2 H:5
 * EMACS
@@ -80,6 +80,81 @@
              (while (re-search-forward "\n\n+" nil t)
                (replace-match "\n\n"))))))
       #+end_src
+** 자동완성 기능 패키지
+   - Hippie Expand : 내장 패키지
+     + dabbrev와 유사하지만 더 강력하고 유연한 기능을 제공하는 자동 완성 기능
+     + 기본적으로 M-/ 키에 바인딩. 입력 도중 단축키 눌러 입력 편의 도움
+       #+begin_src emacs-lisp
+(use-package hippie-exp
+  :ensure nil  ; built-in
+  :bind ("M-/" . hippie-expand) 
+  :hook (org-mode . (lambda ()
+                      (make-local-variable 'hippie-expand-try-functions-list)
+                      (add-to-list 'hippie-expand-try-functions-list 'try-expand-org-keyword t)))
+  :config
+  (setq hippie-expand-try-functions-list
+        '(try-expand-dabbrev
+          try-expand-dabbrev-all-buffers
+          try-expand-dabbrev-from-kill
+          try-complete-lisp-symbol-partially
+          try-complete-lisp-symbol
+          try-expand-whole-kill
+          try-expand-list
+          try-expand-line
+          try-complete-file-name-partially
+          try-complete-file-name))
+  ;; 특정 모드 무시 설정 (참고용으로만 유지, 실제로는 사용되지 않음)
+  (setq hippie-expand-ignore-buffers
+        '(archive-mode image-mode doc-view-mode pdf-view-mode tags-table-mode))
+  ;; for org-mode 
+  (defun try-expand-org-keyword (old)
+    "Org-mode 키워드 완성 함수"
+    (unless old
+      (he-init-string (he-dabbrev-beg) (point))
+      (setq he-expand-list
+            (let ((completion-ignore-case t))
+              (all-completions he-search-string org-keywords))))
+    (while (and he-expand-list
+                (he-string-member (car he-expand-list) he-tried-table))
+      (setq he-expand-list (cdr he-expand-list)))
+    (if (null he-expand-list)
+        (progn (when old (he-reset-string))
+               nil)
+      (he-substitute-string (car he-expand-list))
+      (setq he-expand-list (cdr he-expand-list))
+      t)))
+       #+end_src   
+   - abbrev : 내장 패키지
+     + Emacs의 내장 기능 중 하나로 사용자가 정의한 약어를 자동으로 확장해주는 기능을 제공
+     + 예를 들어, "mymail"를 입력하면 자동으로 "000@mail.com"로 변환
+       #+begin_src emacs-lisp
+(use-package abbrev
+  :ensure nil				;built-in
+  :config
+  (setq-default abbrev-mode t)
+  (setq save-abbrevs nil)
+  ;; (setq save-abbrevs 'silently)        ;; save abbrevs when files are saved
+  (abbrev-table-put global-abbrev-table :regexp "\\(?:^\\|[\t\s]+\\)\\(?1:[:;_].*\\|.*\\)")
+  (define-abbrev-table 'global-abbrev-table 
+    '(("m2"  "㎡")   ("km"  "㎞")  ("lDot" "……") 
+      ("cX"    "×")   ("cB"   "※")  ("lDash" "―")
+      ("lG"    "「")   ("rG"    "」")
+      ("llG"  "『")   ("rrG"   "』")
+      ("cZ"   "○")   ("cQ"   "□")
+      ))
+;; Org 모드 약어 테이블 설정
+  (with-eval-after-load 'org
+    (define-abbrev-table 'org-mode-abbrev-table
+      '(("Dsc" "#+DESCRIPTION: ")
+	("Author" "#+AUTHOR: ")
+	("Keyword" "#+KEYWORDS: ")
+	("Setfile"   "#+SETUPFILE: setLTH/Header.org")
+	("SetfileQV"   "#+SETUPFILE: setLTH/Header_quote_verse.org")
+	("Option"  "#+OPTIONS: toc:2 num:2")
+	("Latex_header"  "#+LATEX_HEADER:")
+	)))
+  )
+       #+end_src
 * GITHUB
 ** github.io 입문
    - Create a repository
@@ -187,8 +262,7 @@
     #+begin_src 
     $ git clone 원격저장소URL 새폴더이름
     #+end_src
-** magit
-   - 소개
+** magit 소개
    magit은 Emacs를 위한 강력한 Git 인터페이스 패키지입니다. 이 패키지는 Git 버전 관리 시스템을 Emacs 내에서 효율적으로 사용할 수 있게 해줌
      1. 직관적인 인터페이스: Git 작업을 위한 키 바인딩과 메뉴를 제공합니다.
      2. 상태 보기: 현재 Git 저장소의 상태를 쉽게 확인할 수 있습니다.
@@ -207,9 +281,6 @@
      :config
       (setq magit-auto-revert-mode t))
    #+end_src
-
-
-   
 * 환경
   - emacs for macOS
     + Macbook Air(M1,  macOS 14.6.1),   - emacs-version: 31.0.50,    - org-version : 9.7.10
