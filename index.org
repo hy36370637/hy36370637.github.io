@@ -50,111 +50,15 @@
     (interactive)
     (ispell-buffer))
     #+end_src
-** Function
-   - trailing-whitespace 관련
-     + 문장 끝의 줄바꿈 표시를 공백으로 대체하여 문장을 연결하고 빈 줄은 유지하는 함수
-     #+begin_src emacs-lisp
-     (defun my/delete-trailing-whitespace-region (start end)
-       "줄 끝의 공백과 탭을 제거,  줄바꿈과 빈 줄 그대로 유지."
-       (interactive "r")
-       (save-excursion
-	 (save-restriction
-	   (narrow-to-region start end)
-	   (goto-char (point-min))
-	   (while (re-search-forward "[ \t]+$" nil t)
-             (replace-match "")))))
-
-     (defun my/delete-trailling-whitespace-line-join (&optional start end)
-       "줄끝의 줄바꿈을 공백으로 대체하고 줄(라인) 연결, 연속된 빈 줄을 하나로 줄여 유지"
-      (interactive)
-       (let* ((use-region (use-region-p))
-              (start (if use-region (region-beginning) (point-min)))
-              (end (if use-region (region-end) (point-max))))
-	 (save-excursion
-	   (save-restriction
-             (narrow-to-region start end)
-             (goto-char (point-min))
-             (while (re-search-forward "\\([^\n]\\)\\(\n\\)\\([^\n]\\)" nil t)
-               (replace-match "\\1 \\3"))
-             (goto-char (point-min))
-             (while (re-search-forward "\n\n+" nil t)
-               (replace-match "\n\n"))))))
-      #+end_src
-** 자동완성
-   - Hippie Expand 
-     + dabbrev와 유사하지만 더 강력하고 유연한 기능을 제공하는 자동 완성 기능
-     + 기본적으로 M-/ 키에 바인딩. 입력 도중 단축키 눌러 입력 편의 도움
-       #+begin_src emacs-lisp
-(use-package hippie-exp
-  :ensure nil  ; built-in
-  :bind ("M-/" . hippie-expand) 
-  :hook (org-mode . (lambda ()
-                      (make-local-variable 'hippie-expand-try-functions-list)
-                      (add-to-list 'hippie-expand-try-functions-list 'try-expand-org-keyword t)))
-  :config
-  (setq hippie-expand-try-functions-list
-        '(try-expand-dabbrev
-          try-expand-dabbrev-all-buffers
-          try-expand-dabbrev-from-kill
-          try-complete-lisp-symbol-partially
-          try-complete-lisp-symbol
-          try-expand-whole-kill
-          try-expand-list
-          try-expand-line
-          try-complete-file-name-partially
-          try-complete-file-name))
-  ;; 특정 모드 무시 설정 (참고용으로만 유지, 실제로는 사용되지 않음)
-  (setq hippie-expand-ignore-buffers
-        '(archive-mode image-mode doc-view-mode pdf-view-mode tags-table-mode))
-  ;; for org-mode 
-  (defun try-expand-org-keyword (old)
-    "Org-mode 키워드 완성 함수"
-    (unless old
-      (he-init-string (he-dabbrev-beg) (point))
-      (setq he-expand-list
-            (let ((completion-ignore-case t))
-              (all-completions he-search-string org-keywords))))
-    (while (and he-expand-list
-                (he-string-member (car he-expand-list) he-tried-table))
-      (setq he-expand-list (cdr he-expand-list)))
-    (if (null he-expand-list)
-        (progn (when old (he-reset-string))
-               nil)
-      (he-substitute-string (car he-expand-list))
-      (setq he-expand-list (cdr he-expand-list))
-      t)))
-       #+end_src   
-     + abbrev
-     + Emacs의 내장 기능. 사용자가 정의한 약어 → 자동 변환
-     + 예를 들어, "mymail"를 입력하면 자동으로 "000@mail.com"로 변환
-       #+begin_src emacs-lisp
-(use-package abbrev
-  :ensure nil				;built-in
-  :config
-  (setq-default abbrev-mode t)
-  (setq save-abbrevs nil)
-  ;; (setq save-abbrevs 'silently)        ;; save abbrevs when files are saved
-  (abbrev-table-put global-abbrev-table :regexp "\\(?:^\\|[\t\s]+\\)\\(?1:[:;_].*\\|.*\\)")
-  (define-abbrev-table 'global-abbrev-table 
-    '(("m2"  "㎡")   ("km"  "㎞")  ("lDot" "……") 
-      ("cX"    "×")   ("cB"   "※")  ("lDash" "―")
-      ("lG"    "「")   ("rG"    "」")
-      ("llG"  "『")   ("rrG"   "』")
-      ("cZ"   "○")   ("cQ"   "□")
-      ))
-;; Org 모드 약어 테이블 설정
-  (with-eval-after-load 'org
-    (define-abbrev-table 'org-mode-abbrev-table
-      '(("Dsc" "#+DESCRIPTION: ")
-	("Author" "#+AUTHOR: ")
-	("Keyword" "#+KEYWORDS: ")
-	("Setfile"   "#+SETUPFILE: setLTH/Header.org")
-	("SetfileQV"   "#+SETUPFILE: setLTH/Header_quote_verse.org")
-	("Option"  "#+OPTIONS: toc:2 num:2")
-	("Latex_header"  "#+LATEX_HEADER:")
-	)))
-  )
-       #+end_src
+** beorg
+    - Apple Calendar와 Org Agenda를 연동하는 목적으로 사용
+    - Org 모드 지원: Beorg는 Org 파일 형식을 기본적으로 지원하므로, Org Agenda와의 호환성이 뛰어납니다.
+    - Apple Calendar 통합: Beorg는 iOS의 기본 캘린더 앱과 통합되어 있어, Apple Calendar의 이벤트를 Beorg 내에서 볼 수 있고, Beorg에서 생성한 일정을 Apple Calendar에 동기화할 수 있습니다.
+    - 양방향 동기화: Beorg에서 생성한 일정과 할 일 항목을 Apple Calendar에 표시할 수 있으며, 반대로 Apple Calendar의 이벤트를 Beorg에서 확인할 수 있습니다.
+    - Org Agenda 워크플로우 유지: Emacs의 Org Agenda 사용자라면, Beorg를 통해 모바일에서도 유사한 워크플로우를 유지할 수 있습니다.
+    - 클라우드 동기화: iCloud나 Dropbox를 통해 Org 파일을 동기화할 수 있어, 데스크톱의 Emacs와 모바일의 Beorg 사이에서 원활한 작업이 가능
+    - 유연성: Beorg는 단순히 Calendar 앱과 Org 파일을 연결하는 것 이상의 기능을 제공하여, 필요에 따라 더 복잡한 작업 관리도 가능
+* etc
 ** github
 *** git 개념
 **** Git 저장소 생성
@@ -261,34 +165,26 @@
     - git commit -m "Initial commit"
     - git push -u origin main
      #+end_src
-*** magit
-    magit은 Emacs를 위한 강력한 Git 인터페이스 패키지입니다. 이 패키지는 Git 버전 관리 시스템을 Emacs 내에서 효율적으로 사용할 수 있게 해줌
-      1. 직관적인 인터페이스: Git 작업을 위한 키 바인딩과 메뉴를 제공합니다.
-      2. 상태 보기: 현재 Git 저장소의 상태를 쉽게 확인할 수 있습니다.
-      3. 스테이징: 파일의 변경 사항을 쉽게 스테이징하고 언스테이징할 수 있습니다.
-      4. 커밋: 변경 사항을 빠르게 커밋할 수 있습니다.
-      5. 브랜치 관리: 브랜치 생성, 전환, 병합 등을 쉽게 수행할 수 있습니다.
-      6. 로그 보기: Git 히스토리를 보기 쉽게 표시합니다.
-      7. 리베이스, 체리픽 등: 고급 Git 기능도 지원합니다.
+** magit
+   magit은 Emacs를 위한 강력한 Git 인터페이스 패키지입니다. 이 패키지는 Git 버전 관리 시스템을 Emacs 내에서 효율적으로 사용할 수 있게 해줌
+     1. 직관적인 인터페이스: Git 작업을 위한 키 바인딩과 메뉴를 제공합니다.
+     2. 상태 보기: 현재 Git 저장소의 상태를 쉽게 확인할 수 있습니다.
+     3. 스테이징: 파일의 변경 사항을 쉽게 스테이징하고 언스테이징할 수 있습니다.
+     4. 커밋: 변경 사항을 빠르게 커밋할 수 있습니다.
+     5. 브랜치 관리: 브랜치 생성, 전환, 병합 등을 쉽게 수행할 수 있습니다.
+     6. 로그 보기: Git 히스토리를 보기 쉽게 표시합니다.
+     7. 리베이스, 체리픽 등: 고급 Git 기능도 지원합니다.
 
-      magit을 사용하면 Git 명령어를 직접 입력하지 않고도 대부분의 Git 작업을 Emacs 내에서 수행할 수 있습니다.
-    - 설정
-    #+begin_src 
+     magit을 사용하면 Git 명령어를 직접 입력하지 않고도 대부분의 Git 작업을 Emacs 내에서 수행할 수 있습니다.
+   - 설정
+   #+begin_src 
    (use-package magit
      :ensure t
      :bind (("C-x g" . magit-status))
      :config
       (setq magit-auto-revert-mode t))
-    #+end_src
-** beorg
-    - Apple Calendar와 Org Agenda를 연동하는 목적으로 사용
-    - Org 모드 지원: Beorg는 Org 파일 형식을 기본적으로 지원하므로, Org Agenda와의 호환성이 뛰어납니다.
-    - Apple Calendar 통합: Beorg는 iOS의 기본 캘린더 앱과 통합되어 있어, Apple Calendar의 이벤트를 Beorg 내에서 볼 수 있고, Beorg에서 생성한 일정을 Apple Calendar에 동기화할 수 있습니다.
-    - 양방향 동기화: Beorg에서 생성한 일정과 할 일 항목을 Apple Calendar에 표시할 수 있으며, 반대로 Apple Calendar의 이벤트를 Beorg에서 확인할 수 있습니다.
-    - Org Agenda 워크플로우 유지: Emacs의 Org Agenda 사용자라면, Beorg를 통해 모바일에서도 유사한 워크플로우를 유지할 수 있습니다.
-    - 클라우드 동기화: iCloud나 Dropbox를 통해 Org 파일을 동기화할 수 있어, 데스크톱의 Emacs와 모바일의 Beorg 사이에서 원활한 작업이 가능
-    - 유연성: Beorg는 단순히 Calendar 앱과 Org 파일을 연결하는 것 이상의 기능을 제공하여, 필요에 따라 더 복잡한 작업 관리도 가능
-* etc
-   - [[https://github.com/hy36370637][github 방문]]
-   - emacs for macOS
-     + Macbook Air(M1,  macOS 14.6.1),   - emacs-version: 31.0.50,    - org-version : 9.7.10
+   #+end_src
+
+  - [[https://github.com/hy36370637][github 방문]]
+  - emacs for macOS
+    + Macbook Air(M1,  macOS 14.6.1),   - emacs-version: 31.0.50,    - org-version : 9.7.10
