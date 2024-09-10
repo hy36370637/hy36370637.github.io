@@ -3,7 +3,6 @@
 #+AUTHOR:  HO Young Kim
 #+OPTIONS: html-style:nil html-scripts:nil html-list-type:unordered num:nil toc:2 H:5
 * emacs
-  - [[https://github.com/hy36370637/Dotemacs][repository]]
 ** 한글맞춤법
 *** hunspell 설치
     #+begin_src 
@@ -156,85 +155,85 @@
 	)))
   )
        #+end_src
-* github
-** git 개념
-*** Git 저장소 생성
-    - 폴더와 Git 저장소
-      + 일반적인 폴더와 Git 저장소(repository) 차이:  숨겨진 영역 여부
-    - 초기화
-      + 대상 폴더 이동: cd folder
-      + 초기화 명령으로 숨겨진 영역 생성: git init [경로명]    #경로명 입력 없으면 현재 폴더에서 초기화
-	#+begin_src 
+** github
+*** git 개념
+**** Git 저장소 생성
+     - 폴더와 Git 저장소
+       + 일반적인 폴더와 Git 저장소(repository) 차이:  숨겨진 영역 여부
+     - 초기화
+       + 대상 폴더 이동: cd folder
+       + 초기화 명령으로 숨겨진 영역 생성: git init [경로명]    #경로명 입력 없으면 현재 폴더에서 초기화
+	 #+begin_src 
        $ git init .   #현재 폴더를 의미하는 . 사용할 수도 있음
-	#+end_src
-*** 워킹 디렉터리
-    - 워킹 디렉터리(워킹 트리)란?  - 논리적으로 공간을 분리하여 Git의 동작과 이력 효율적 처리
-      + 작업을 하는 공간(working)
-      + 임시로 저장하는 공간(stage)
-      + 실제 저장하여 기록하는 공간(repository)
-    - untracked 상태
-      + 워킹 디렉터리(사용자 작업공간)에 새로 생성된 파일은 모두 *추적되지 않음(untracked)* → *기본값*
-      + 파일 관리하려면 Git에 추적하라고 통지해야 함
-    - tracked 상태
-      + 아래의 명령어 실행하여 *추적(tracked)* 상태로 변경
-	#+begin_src 
+	 #+end_src
+**** 워킹 디렉터리
+     - 워킹 디렉터리(워킹 트리)란?  - 논리적으로 공간을 분리하여 Git의 동작과 이력 효율적 처리
+       + 작업을 하는 공간(working)
+       + 임시로 저장하는 공간(stage)
+       + 실제 저장하여 기록하는 공간(repository)
+     - untracked 상태
+       + 워킹 디렉터리(사용자 작업공간)에 새로 생성된 파일은 모두 *추적되지 않음(untracked)* → *기본값*
+       + 파일 관리하려면 Git에 추적하라고 통지해야 함
+     - tracked 상태
+       + 아래의 명령어 실행하여 *추적(tracked)* 상태로 변경
+	 #+begin_src 
      $ git add
-	#+end_src
-*** 스테이지(stage)
-    - stage=임시 영역
-      + 워킹 디렉터리에서 제출된 tracked 파일들을 관리하는 임시영역
-      + 파일의 콘텐츠 내용 직접 가지고 있지 않으며 단지 커밋하려는 파일의 추적 상태 정보만 보유  → 커밋 빠르게 위함
-      + 파일들의 스테이지 상태
-	#+begin_src 
+	 #+end_src
+**** 스테이지(stage)
+     - stage=임시 영역
+       + 워킹 디렉터리에서 제출된 tracked 파일들을 관리하는 임시영역
+       + 파일의 콘텐츠 내용 직접 가지고 있지 않으며 단지 커밋하려는 파일의 추적 상태 정보만 보유  → 커밋 빠르게 위함
+       + 파일들의 스테이지 상태
+	 #+begin_src 
        $ git status
        $ git ls-files --stage
-	#+end_src
-      + stage 영역에 등록된 파일은 *stage* 상태 vs *unstage* 상태로 구분
-      + .gitignore : 버전관리 제외 목록을 담은 파일
-    - 파일의 stage상태와 unstage상태
-      + 스테이지 영역으로 등록된 파일은 untracked  → tracked 상태로 변경. 스테이지는 워킹 디렉터리에 있는 파일들의 추적 상태를 관리하는 역할 수행
-      + 스테이지 영역에 있는 파일과 워킹 디렉터리 안에 있는 파일 내용에 차이 있을 때는 unstage 상태
-      + 넓게 보면 아직 스테이지 영역에 등록하지 않은 워킹 디렉터리 안의 파일도 unstage 상태. git add 명령어를 사용하면 스테이지에 다시 추가 가능
-    - 파일의 modified 상태와 unmodified 상태
-      + 코드를 변경한다는 것은 워킹 디렉터리에서 파일을 *수정* 하는 것 → 워킹 디렉터리와 스테이지 간 내용 불일치
-      + 수장한 파일과 원본 파일 구분을 위해: modified vs unmodified 상태
-    - modified 상태
-      + traced 상태인 파일 수정되면 → 스테이지는 파일 상태를 modified 상태로 변경
-      + 수정된 파일은 스테이지에서 잠시 *제외* →  modified 상태 변경된 파일을 git add 명령어로 재등록해야   ~이해 안되는 부분. Magit만 사용해서~
-    - unmodified 상태
-      + 스테이지에 등록한 후 어떤 수정도 하지 않았다면 unmodified 상태
-*** 파일의 상태 확인
-    -  status 명령어: Git 상태 확인
-     #+begin_src 
-    $ git status    ……  상태확인
-     #+end_src
-*** 파일 관리 목록에서 제외: .gitignore
-    - 저장소 폴더의 최상위 디렉터리에 위치해야 함
-    - Git에서 관리하지 않는 파일들의 목록
-    - .gitignore 파일 표기법
+	 #+end_src
+       + stage 영역에 등록된 파일은 *stage* 상태 vs *unstage* 상태로 구분
+       + .gitignore : 버전관리 제외 목록을 담은 파일
+     - 파일의 stage상태와 unstage상태
+       + 스테이지 영역으로 등록된 파일은 untracked  → tracked 상태로 변경. 스테이지는 워킹 디렉터리에 있는 파일들의 추적 상태를 관리하는 역할 수행
+       + 스테이지 영역에 있는 파일과 워킹 디렉터리 안에 있는 파일 내용에 차이 있을 때는 unstage 상태
+       + 넓게 보면 아직 스테이지 영역에 등록하지 않은 워킹 디렉터리 안의 파일도 unstage 상태. git add 명령어를 사용하면 스테이지에 다시 추가 가능
+     - 파일의 modified 상태와 unmodified 상태
+       + 코드를 변경한다는 것은 워킹 디렉터리에서 파일을 *수정* 하는 것 → 워킹 디렉터리와 스테이지 간 내용 불일치
+       + 수장한 파일과 원본 파일 구분을 위해: modified vs unmodified 상태
+     - modified 상태
+       + traced 상태인 파일 수정되면 → 스테이지는 파일 상태를 modified 상태로 변경
+       + 수정된 파일은 스테이지에서 잠시 *제외* →  modified 상태 변경된 파일을 git add 명령어로 재등록해야   ~이해 안되는 부분. Magit만 사용해서~
+     - unmodified 상태
+       + 스테이지에 등록한 후 어떤 수정도 하지 않았다면 unmodified 상태
+**** 파일의 상태 확인
+     -  status 명령어: Git 상태 확인
       #+begin_src 
+    $ git status    ……  상태확인
+      #+end_src
+**** 파일 관리 목록에서 제외: .gitignore
+     - 저장소 폴더의 최상위 디렉터리에 위치해야 함
+     - Git에서 관리하지 않는 파일들의 목록
+     - .gitignore 파일 표기법
+       #+begin_src 
       # : 주석
       ! : 제외하지 않는 파일, 필요한 파일 앞
       * : 모든 문자열
       예: !config.php(config.php제외).
 	  /pub/(/pub/ 디렉터리 안의 모든 것을 제외).
 	  doc/**/*.txt(doc 디렉터리 아래의 모든 .txt 파일 제외)
-      #+end_src
-*** Git 저장소 복제
-    - 초기화 명령(git init) : 새 저장소를 생성하는 방법 중 하나( 직접 로컬 컴퓨터에 명령어 실행하여 저장소 생성하는 방법)
-    - Git 저장소 복제 : 외부의 기존 프로젝트(깃허브)를 기반으로 저장소 생성하는 것
-    - 다운로드 vs 복제
-      + 웹 사이트(예 깃허브)에 압축 파일을 다운로드(깃의 이력 불포함)
-      + Git을 이용하여 저장소 복제하면 최종 코드와 중간에 커밋 같은 변화의 모든 이력도 같이 내려받을 수 있음
-    - 복제clone 명령어
-    #+begin_src 
+       #+end_src
+**** Git 저장소 복제
+     - 초기화 명령(git init) : 새 저장소를 생성하는 방법 중 하나( 직접 로컬 컴퓨터에 명령어 실행하여 저장소 생성하는 방법)
+     - Git 저장소 복제 : 외부의 기존 프로젝트(깃허브)를 기반으로 저장소 생성하는 것
+     - 다운로드 vs 복제
+       + 웹 사이트(예 깃허브)에 압축 파일을 다운로드(깃의 이력 불포함)
+       + Git을 이용하여 저장소 복제하면 최종 코드와 중간에 커밋 같은 변화의 모든 이력도 같이 내려받을 수 있음
+     - 복제clone 명령어
+     #+begin_src 
     $ git clone 원격저장소URL 새폴더이름
-    #+end_src
-** github 입문
-   - 새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
-     + cd ~/Dropbox/Docs
-     + repository 만든 후 안내 내용
-   #+begin_src 
+     #+end_src
+*** github 입문
+    - 새 저장소 생성: Github.com/hy36370637/Docs.git (private 계정. 유료)
+      + cd ~/Dropbox/Docs
+      + repository 만든 후 안내 내용
+    #+begin_src 
      $ echo "# Docs" >> README.md
      $ git init
      $ git add README.md   → git add .
@@ -242,46 +241,54 @@
      $ git branch -M main
      $ git remote add origin git@github.com:hy36370637/Docs.git
      $ git push -u origin main
-   #+end_src
-** github.io 입문
-   - Create a repository
-     + username.github.io
-     + 나머지는 기본값 유지
-   - Clone the repository
-    #+begin_src 
-    - git clone git@github.com:username/username.github.io
     #+end_src
-   - add an index.html file
-   #+begin_src
+*** github.io 입문
+    - Create a repository
+      + username.github.io
+      + 나머지는 기본값 유지
+    - Clone the repository
+     #+begin_src 
+    - git clone git@github.com:username/username.github.io
+     #+end_src
+    - add an index.html file
+    #+begin_src
    - cd username.github.io
    - echo "Hello World" > index.html
-   #+end_src
-   -  Push it
-    #+begin_src 
+    #+end_src
+    -  Push it
+     #+begin_src 
     - git add --all
     - git commit -m "Initial commit"
     - git push -u origin main
-    #+end_src
-** magit
-   magit은 Emacs를 위한 강력한 Git 인터페이스 패키지입니다. 이 패키지는 Git 버전 관리 시스템을 Emacs 내에서 효율적으로 사용할 수 있게 해줌
-     1. 직관적인 인터페이스: Git 작업을 위한 키 바인딩과 메뉴를 제공합니다.
-     2. 상태 보기: 현재 Git 저장소의 상태를 쉽게 확인할 수 있습니다.
-     3. 스테이징: 파일의 변경 사항을 쉽게 스테이징하고 언스테이징할 수 있습니다.
-     4. 커밋: 변경 사항을 빠르게 커밋할 수 있습니다.
-     5. 브랜치 관리: 브랜치 생성, 전환, 병합 등을 쉽게 수행할 수 있습니다.
-     6. 로그 보기: Git 히스토리를 보기 쉽게 표시합니다.
-     7. 리베이스, 체리픽 등: 고급 Git 기능도 지원합니다.
+     #+end_src
+*** magit
+    magit은 Emacs를 위한 강력한 Git 인터페이스 패키지입니다. 이 패키지는 Git 버전 관리 시스템을 Emacs 내에서 효율적으로 사용할 수 있게 해줌
+      1. 직관적인 인터페이스: Git 작업을 위한 키 바인딩과 메뉴를 제공합니다.
+      2. 상태 보기: 현재 Git 저장소의 상태를 쉽게 확인할 수 있습니다.
+      3. 스테이징: 파일의 변경 사항을 쉽게 스테이징하고 언스테이징할 수 있습니다.
+      4. 커밋: 변경 사항을 빠르게 커밋할 수 있습니다.
+      5. 브랜치 관리: 브랜치 생성, 전환, 병합 등을 쉽게 수행할 수 있습니다.
+      6. 로그 보기: Git 히스토리를 보기 쉽게 표시합니다.
+      7. 리베이스, 체리픽 등: 고급 Git 기능도 지원합니다.
 
-     magit을 사용하면 Git 명령어를 직접 입력하지 않고도 대부분의 Git 작업을 Emacs 내에서 수행할 수 있습니다.
-   - 설정
-   #+begin_src 
+      magit을 사용하면 Git 명령어를 직접 입력하지 않고도 대부분의 Git 작업을 Emacs 내에서 수행할 수 있습니다.
+    - 설정
+    #+begin_src 
    (use-package magit
      :ensure t
      :bind (("C-x g" . magit-status))
      :config
       (setq magit-auto-revert-mode t))
-   #+end_src
-* 환경
-  - emacs for macOS
-    + Macbook Air(M1,  macOS 14.6.1),   - emacs-version: 31.0.50,    - org-version : 9.7.10
-  - [[https://github.com/hy36370637/BuildEmacs][BuilderScript]] Repository
+    #+end_src
+** beorg
+    - Apple Calendar와 Org Agenda를 연동하는 목적으로 사용
+    - Org 모드 지원: Beorg는 Org 파일 형식을 기본적으로 지원하므로, Org Agenda와의 호환성이 뛰어납니다.
+    - Apple Calendar 통합: Beorg는 iOS의 기본 캘린더 앱과 통합되어 있어, Apple Calendar의 이벤트를 Beorg 내에서 볼 수 있고, Beorg에서 생성한 일정을 Apple Calendar에 동기화할 수 있습니다.
+    - 양방향 동기화: Beorg에서 생성한 일정과 할 일 항목을 Apple Calendar에 표시할 수 있으며, 반대로 Apple Calendar의 이벤트를 Beorg에서 확인할 수 있습니다.
+    - Org Agenda 워크플로우 유지: Emacs의 Org Agenda 사용자라면, Beorg를 통해 모바일에서도 유사한 워크플로우를 유지할 수 있습니다.
+    - 클라우드 동기화: iCloud나 Dropbox를 통해 Org 파일을 동기화할 수 있어, 데스크톱의 Emacs와 모바일의 Beorg 사이에서 원활한 작업이 가능
+    - 유연성: Beorg는 단순히 Calendar 앱과 Org 파일을 연결하는 것 이상의 기능을 제공하여, 필요에 따라 더 복잡한 작업 관리도 가능
+* etc
+   - [[https://github.com/hy36370637][github 방문]]
+   - emacs for macOS
+     + Macbook Air(M1,  macOS 14.6.1),   - emacs-version: 31.0.50,    - org-version : 9.7.10
